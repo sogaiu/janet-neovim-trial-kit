@@ -157,7 +157,14 @@ jpm run neovim
 
 * Android via Termux (`clang` as `cc`, `janet` + `jpm` built from source)
 * Void Linux
-* Windows 10
+* Windows 10 (though see "Known Issues" below)
+
+## Known Issues
+
+* I haven't succeeded in getting Conjure's netrepl support to work on
+  Windows.  I'm pretty sure it has something to do with Conjure
+  because I've had success using a non-Conjure netrepl setup on
+  Windows.
 
 ## Footnotes
 
