@@ -46,7 +46,8 @@ require('nvim-treesitter.configs').setup {
   ensure_installed = {"bash",
                       "c",
                       "html",
-                      "janet_simple", "javascript"},
+                      "janet_simple", "javascript"
+                      "query"},
   highlight = {
     enable = true,
   },
