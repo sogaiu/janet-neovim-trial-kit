@@ -3,6 +3,8 @@
 Try out some Janet support in Neovim without interfering with
 your existing Neovim setup [1].
 
+![Demo](janet-neovim-trial-kit-linux.png?raw=true "Demo")
+
 ## Requirements
 
 * C compiler ([gcc](https://gcc.gnu.org/),
