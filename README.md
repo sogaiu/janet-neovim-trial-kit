@@ -37,6 +37,7 @@ The Neovim setup provides:
   support
 * [nvim-treesitter-context](https://github.com/nvim-treesitter/nvim-treesitter-context/)
 * [playground](https://github.com/nvim-treesitter/playground)
+* [rainbow-delimiters.nvim](https://github.com/HiPhish/rainbow-delimiters.nvim)
 * [vim-plug](https://github.com/junegunn/vim-plug)
 * [which-key](https://github.com/folke/which-key.nvim)
 
