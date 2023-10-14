@@ -29,19 +29,22 @@ For Windows:
 
 The Neovim setup provides:
 
-* [Conjure](https://github.com/Olical/conjure/)
-* [gruvbox](https://github.com/sogaiu/morhetz/gruvbox)
-* [janet.vim](https://github.com/janet-lang/janet.vim)
-* [nvim-lint](https://github.com/mfussenegger/nvim-lint/)
-* [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+* Basic Janet code handling (e.g. indentation) via
+  [janet.vim](https://github.com/janet-lang/janet.vim)
+* Syntax highlighting via
+  [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
   with
   [tree-sitter-janet-simple](https://github.com/sogaiu/tree-sitter-janet-simple)
   support
-* [nvim-treesitter-context](https://github.com/nvim-treesitter/nvim-treesitter-context/)
-* [playground](https://github.com/nvim-treesitter/playground)
-* [rainbow-delimiters.nvim](https://github.com/HiPhish/rainbow-delimiters.nvim)
-* [vim-plug](https://github.com/junegunn/vim-plug)
-* [which-key](https://github.com/folke/which-key.nvim)
+* REPL interaction via [Conjure](https://github.com/Olical/conjure/)
+* Linting via [nvim-lint](https://github.com/mfussenegger/nvim-lint/)
+* Contextual awareness via [nvim-treesitter-context](https://github.com/nvim-treesitter/nvim-treesitter-context/)
+* Syntactic code view and navigation via
+  [playground](https://github.com/nvim-treesitter/playground)
+* Rainbow delimiters via [rainbow-delimiters.nvim](https://github.com/HiPhish/rainbow-delimiters.nvim)
+* Dark theme via [gruvbox](https://github.com/sogaiu/morhetz/gruvbox)
+* (Re)discoverability improvements via [which-key](https://github.com/folke/which-key.nvim)
+* Simple plugin manager via [vim-plug](https://github.com/junegunn/vim-plug)
 
 All without having to:
 
