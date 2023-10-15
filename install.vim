@@ -28,9 +28,7 @@ Plug 'nvim-treesitter/nvim-treesitter-context'
 
 Plug 'mfussenegger/nvim-lint'
 
-" XXX: waiting for merge
-"Plug 'HiPhish/rainbow-delimiters.nvim'
-Plug 'sogaiu/rainbow-delimiters.nvim', { 'branch': 'janet'}
+Plug 'HiPhish/rainbow-delimiters.nvim'
 
 call plug#end()
 
