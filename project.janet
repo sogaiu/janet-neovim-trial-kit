@@ -140,16 +140,6 @@
     (eprintf "Failed to determine nvim config and data locations")
     (os/exit 1))
   (def [nvim-data nvim-config] nvim-info)
-  # copy relevant files to appropriate locations
-  (os/mkdir nvim-data)
-  (os/mkdir (string nvim-data "/site"))
-  (os/mkdir (string nvim-data "/site/autoload"))
-  (spit (string nvim-data "/site/autoload/plug.vim")
-        (slurp "plug.vim"))
-  #
-  (os/mkdir nvim-config)
-  (spit (string nvim-config "/init.vim")
-        (slurp "init.vim"))
   # install plugins
   (print "Installing plugins...")
   (os/execute ["nvim"
