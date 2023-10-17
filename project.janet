@@ -66,36 +66,6 @@
         first
         scan-number))
 
-(defn get-nvim-info
-  []
-  (def out-fname "nvim.txt")
-  (def cmd
-    ["nvim"
-     "-es"
-     "-c" (string `redir! >` out-fname)
-     "-c" `echo stdpath("data")`
-     "-c" `echo stdpath("config")`
-     "-c" `echo "\n"`
-     "-c" `quit`])
-  (var results nil)
-  (try
-    (when (zero? (os/execute cmd :px))
-      (set results (slurp out-fname)))
-    ([e]
-      (eprintf "Failed to get nvim config info")))
-  # clean up if needed
-  (when (os/stat out-fname)
-    (os/rm out-fname))
-  #
-  (if results
-    (peg/match ~(sequence (any (set "\r\n"))
-                          (some (sequence (not (choice "\r\n" "\n"))
-                                          # target
-                                          (capture (to (choice "\r\n" "\n")))
-                                          (choice "\r\n" "\n"))))
-               results)
-    results))
-
 # XXX: intent is to modify what neovim's stdpath returns
 #      see :h standard-path and ;h base-directories
 (defn isolate
@@ -134,12 +104,6 @@
     (when (not (ensure-bin "cc"))
       (eprintf "Failed to find C compiler (cc) on PATH\n")
       (os/exit 1)))
-  # figure out where various files should live
-  (def nvim-info (get-nvim-info))
-  (when (not nvim-info)
-    (eprintf "Failed to determine nvim config and data locations")
-    (os/exit 1))
-  (def [nvim-data nvim-config] nvim-info)
   # install plugins
   (print "Installing plugins...")
   (os/execute ["nvim"
