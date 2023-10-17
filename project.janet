@@ -10,8 +10,6 @@
 (task "test" []
   (print "Sorry, no tests here, try `jpm tasks`."))
 
-(def app-name "janet-neovim-trial-kit")
-
 (defn ensure-bin
   [name]
   (try
@@ -98,8 +96,20 @@
                results)
     results))
 
+# XXX: intent is to modify what neovim's stdpath returns
+#      see :h standard-path and ;h base-directories
+(defn isolate
+  []
+  (def root-dir (os/cwd))
+  (os/setenv "XDG_CONFIG_HOME" (string root-dir "/config"))
+  (os/setenv "XDG_DATA_HOME" (string root-dir "/data"))
+  #(os/setenv "XDG_RUNTIME_DIR" (string root-dir "/runtime"))
+  (os/setenv "XDG_STATE_HOME" (string root-dir "/state"))
+  (os/setenv "XDG_CACHE_HOME" (string root-dir "/cache"))
+  (os/setenv "XDG_LOG_FILE" (string root-dir "/log")))
+
 (task "setup" []
-  (os/setenv "NVIM_APPNAME" app-name)
+  (isolate)
   # verify nvim exists and its version is sufficient
   (if (= :windows (os/which))
     (when (not (ensure-win-bin "nvim.exe"))
@@ -150,6 +160,6 @@
               :px))
 
 (task "neovim" ["setup"]
-  (os/setenv "NVIM_APPNAME" app-name)
+  (isolate)
   (os/execute ["nvim"] :px))
 
