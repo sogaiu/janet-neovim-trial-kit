@@ -174,6 +174,6 @@ jpm run neovim
 
 ## Footnotes
 
-[1] The `NVIM_APPNAME` environment variable is used to isolate setting
-information.
+[1] Various `XDG_*` environment variables are set before starting
+`nvim` to influence what is returned by `stdpath`.
 
