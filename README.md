@@ -184,7 +184,9 @@ jpm run neovim
 * I haven't succeeded in getting Conjure's netrepl support to work on
   Windows.  I'm pretty sure it has something to do with Conjure
   because I've had success using a non-Conjure netrepl setup on
-  Windows.
+  Windows.  There is now [a corresponding
+  issue](https://github.com/Olical/conjure/issues/532) at Conjure's
+  repository.  Hopefully it can get sorted out before too long.
 
 ## Footnotes
 
