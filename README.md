@@ -165,6 +165,20 @@ jpm run neovim
 * Void Linux
 * Windows 10 (though see "Known Issues" below)
 
+## Cleanup
+
+* Removing the cloned directory should remove nearly all traces of
+  this program because everything except `$XDG_RUNTIME_DIR` lives
+  within the cloned directory.  IIUC, the content of the exception
+  (`stdpath("run")`) lives in a temporary directory anyway so it may be
+  that one's system will clean it up automatically.
+
+* If you just want a "fresh start", this can be done by issuing `git
+  clean -ff .` from the cloned directory. This should remove all
+  (non-temporary) files and directories that got added via `jpm run
+  neovim`.  Alternatively, just remove the cloned directory and
+  reclone to start over.
+
 ## Known Issues
 
 * I haven't succeeded in getting Conjure's netrepl support to work on
