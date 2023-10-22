@@ -181,12 +181,30 @@ jpm run neovim
 
 ## Known Issues
 
-* I haven't succeeded in getting Conjure's netrepl support to work on
-  Windows.  I'm pretty sure it has something to do with Conjure
-  because I've had success using a non-Conjure netrepl setup on
-  Windows.  There is now [a corresponding
+* I didn't succeed in getting Conjure's netrepl support to work on
+  Windows.
+
+  There is now [an
   issue](https://github.com/Olical/conjure/issues/532) at Conjure's
-  repository.  Hopefully it can get sorted out before too long.
+  repository and things seem to be working better from [this
+  commit](https://github.com/Olical/conjure/commit/cb86d46dbfe45d7183a20dc7124b70321874b414)
+  on the `develop` branch.  Hopefully a release (> 4.48) will arrive
+  soon.
+
+  If impatient, changing:
+
+    ```
+    Plug 'Olical/conjure', { 'tag': 'v4.48.0' }
+    ```
+
+  to:
+
+    ```
+    Plug 'Olical/conjure', { 'tag': 'develop' }
+    ```
+
+  in `install.vim` and `init.vim` might be enough to get
+  things working.
 
 ## Footnotes
 
