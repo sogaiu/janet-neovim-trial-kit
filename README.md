@@ -11,9 +11,7 @@ your existing Neovim setup [1].
   [clang](https://clang.llvm.org/), etc. invocable via `cc`)
 * [git](https://git-scm.com/)
 * [janet](https://janet-lang.org)
-* [jpm](https://github.com/janet-lang/jpm)
 * [nvim](https://neovim.io)
-* [spork](https://github.com/janet-lang/spork)
 
 For Windows:
 
@@ -59,7 +57,7 @@ Initial invocations:
 ```
 git clone https://github.com/sogaiu/janet-neovim-trial-kit
 cd janet-neovim-trial-kit
-jpm run neovim
+janet jntk
 ```
 
 The above lines may take some time to complete as there will likely
@@ -69,20 +67,9 @@ The end result should be a started up Neovim.
 
 ## Verifying Things Are Working
 
-### Conjure REPL Support
+### Basic Evaluation
 
-To verify Conjure's REPL support works, first invoke:
-
-```
-janet-netrepl
-```
-
-in a terminal with the repository's root directory as the current
-working directory.  This command is part of `spork` and by default it
-starts a janet process listening on port `9365` of localhost
-(typically `127.0.0.1`).
-
-Now open a `.janet` file.  This repository contains `sample.janet` for
+Open a `.janet` file.  This repository contains `sample.janet` for
 this purpose.  Once opened, one should see:
 
 ```janet
@@ -96,10 +83,11 @@ this purpose.  Once opened, one should see:
 ```
 
 Also visible should be Conjure's HUD indicating a successful
-connection.  A message like the following should be visible:
+connection.  A message somewhat like the following should be visible:
 
 ```
-# 127.0.0.1:9365 (connected)
+# "janet -n -s" (started)
+Janet 1.32.1-2ea2e72d ...
 ```
 
 To evaluate some code, move the cursor somewhere on top of
@@ -156,14 +144,14 @@ navigated.
 Start Neovim by:
 
 ```
-jpm run neovim
+janet jntk
 ```
 
 ## Operating Systems with Confirmed Success
 
-* Android via Termux (`clang` as `cc`, `janet` + `jpm` built from source)
+* Android via Termux (`clang` as `cc`, `janet` built from source)
 * Void Linux
-* Windows 10 (though see "Known Issues" below)
+* Windows 10
 
 ## Cleanup
 
@@ -175,36 +163,9 @@ jpm run neovim
 
 * If you just want a "fresh start", this can be done by issuing `git
   clean -ff .` from the cloned directory. This should remove all
-  (non-temporary) files and directories that got added via `jpm run
-  neovim`.  Alternatively, just remove the cloned directory and
+  (non-temporary) files and directories that got added via `janet
+  jntk`.  Alternatively, just remove the cloned directory and
   reclone to start over.
-
-## Known Issues
-
-* I didn't succeed in getting Conjure's netrepl support to work on
-  Windows.
-
-  There is now [an
-  issue](https://github.com/Olical/conjure/issues/532) at Conjure's
-  repository and things seem to be working better from [this
-  commit](https://github.com/Olical/conjure/commit/cb86d46dbfe45d7183a20dc7124b70321874b414)
-  on the `develop` branch.  Hopefully a release (> 4.48) will arrive
-  soon.
-
-  If impatient, changing:
-
-    ```
-    Plug 'Olical/conjure', { 'tag': 'v4.48.0' }
-    ```
-
-  to:
-
-    ```
-    Plug 'Olical/conjure', { 'tag': 'develop' }
-    ```
-
-  in `install.vim` and `init.vim` might be enough to get
-  things working.
 
 ## Footnotes
 

@@ -1,14 +1,4 @@
-(declare-project
-  :name "janet-neovim-trial-kit"
-  :description "A Way to Try Neovim with Janet Support"
-  :url "https://github.com/sogaiu/janet-neovim-trial-kit"
-  :repo "git+https://github.com/sogaiu/janet-neovim-trial-kit")
-
 (def proj-dir (os/cwd))
-
-(put (dyn :rules) "test" nil)
-(task "test" []
-  (print "Sorry, no tests here, try `jpm tasks`."))
 
 (defn ensure-bin
   [name]
@@ -108,7 +98,8 @@
   (os/setenv "XDG_CACHE_HOME" (string root-dir "/cache"))
   (os/setenv "XDG_LOG_FILE" (string root-dir "/log")))
 
-(task "setup" []
+(defn setup
+  []
   (isolate)
   # verify nvim exists and its version is sufficient
   (if (= :windows (os/which))
@@ -159,7 +150,9 @@
                "-c" "quit"]
               :px))
 
-(task "neovim" ["setup"]
+(defn main
+  [& argv]
+  (setup)
   (isolate)
-  (os/execute ["nvim"] :px))
+  (os/execute ["nvim" ;(array/slice argv 1)] :px))
 

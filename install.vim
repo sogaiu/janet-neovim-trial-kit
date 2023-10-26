@@ -14,7 +14,7 @@ Plug 'jeetsukumaran/vim-buffersaurus'
 Plug 'Olical/aniseed', { 'tag': 'v3.33.0' }
 
 " :ConjureSchool
-Plug 'Olical/conjure', { 'tag': 'v4.48.0' }
+Plug 'sogaiu/conjure', { 'tag': 'janet-stdio' }
 
 Plug 'bakpakin/janet.vim'
 
