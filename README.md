@@ -176,6 +176,17 @@ janet jntk sample.janet
   jntk`.  Alternatively, just remove the cloned directory and
   reclone to start over.
 
+## Credits
+
+Thanks to authors of various bits, but also the following folks for
+efforts specifically regarding this project:
+
+* bakpakin
+* Grazfather
+* harryvederci
+* Olical
+* pyrmont
+
 ## Footnotes
 
 [1] Various `XDG_*` environment variables are set before starting
