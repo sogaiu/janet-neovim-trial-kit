@@ -36,6 +36,9 @@ The Neovim setup provides:
   support
 * REPL interaction via [Conjure](https://github.com/Olical/conjure/)
 * Linting via [nvim-lint](https://github.com/mfussenegger/nvim-lint/)
+* Structural navigation and editing via
+  [vim-sexp](https://github.com/guns/vim-sexp) and
+  [vim-sexp-mappings-for-regular-people](https://github.com/tpope/vim-sexp-mappings-for-regular-people)
 * Contextual awareness via [nvim-treesitter-context](https://github.com/nvim-treesitter/nvim-treesitter-context/)
 * Syntactic code view and navigation via
   [playground](https://github.com/nvim-treesitter/playground)
@@ -145,6 +148,12 @@ Start Neovim by:
 
 ```
 janet jntk
+```
+
+To specify a file to edit (e.g. `sample.janet`) on startup:
+
+```
+janet jntk sample.janet
 ```
 
 ## Operating Systems with Confirmed Success
