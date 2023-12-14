@@ -29,6 +29,12 @@ Plug 'mfussenegger/nvim-lint'
 
 Plug 'HiPhish/rainbow-delimiters.nvim'
 
+" usable vim-sexp
+Plug 'guns/vim-sexp'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-sexp-mappings-for-regular-people'
+
 call plug#end()
 
 " for using stdio with janet instead of netrepl
@@ -149,6 +155,9 @@ vim.g.rainbow_delimiters = {
     },
 }
 EOF
+
+" so vim-sexp stuff works for janet
+let g:sexp_filetypes = 'clojure,scheme,lisp,timl,janet'
 
 colorscheme gruvbox
 
