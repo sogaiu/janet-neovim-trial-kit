@@ -39,7 +39,6 @@ The Neovim setup provides:
 * Structural navigation and editing via
   [vim-sexp](https://github.com/guns/vim-sexp) and
   [vim-sexp-mappings-for-regular-people](https://github.com/tpope/vim-sexp-mappings-for-regular-people)
-* Contextual awareness via [nvim-treesitter-context](https://github.com/nvim-treesitter/nvim-treesitter-context/)
 * Syntactic code view and navigation via
   [playground](https://github.com/nvim-treesitter/playground)
 * Rainbow delimiters via [rainbow-delimiters.nvim](https://github.com/HiPhish/rainbow-delimiters.nvim)
@@ -181,6 +180,7 @@ janet jntk sample.janet
 Thanks to authors of various bits, but also the following folks for
 efforts specifically regarding this project:
 
+* amano-kenji
 * bakpakin
 * Grazfather
 * harryvederci
