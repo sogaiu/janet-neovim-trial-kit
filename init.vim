@@ -28,17 +28,6 @@ Plug 'tpope/vim-sexp-mappings-for-regular-people'
 
 call plug#end()
 
-" remove after https://github.com/janet-lang/janet.vim/pull/13
-lua << EOF
-vim.api.nvim_create_autocmd(
-  "Filetype",
-  {
-    pattern = {"janet"},
-    command = [[setlocal lisp]]
-  }
-)
-EOF
-
 " for using stdio with janet instead of netrepl
 let g:conjure#filetype#janet = 'conjure.client.janet.stdio'
 
