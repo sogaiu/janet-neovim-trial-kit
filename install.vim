@@ -8,7 +8,7 @@ Plug 'folke/which-key.nvim'
 Plug 'Olical/aniseed', { 'tag': 'v3.33.0' }
 
 " :ConjureSchool
-Plug 'Olical/conjure', { 'tag': 'v4.52.0' }
+Plug 'Olical/conjure', { 'tag': 'v4.52.1' }
 
 Plug 'bakpakin/janet.vim'
 
