@@ -8,32 +8,28 @@
 (defn get-nvim-info
   []
   (def out-fname "nvim.txt")
-  (def cmd
-    ["nvim"
-     "-es"
-     "-c" (string `redir! >` out-fname)
-     "-c" `echo stdpath("data")`
-     "-c" `echo stdpath("config")`
-     "-c" `echo "\n"`
-     "-c" `quit`])
-  (var results nil)
-  (try
-    (when (zero? (os/execute cmd :px))
-      (set results (slurp out-fname)))
-    ([e]
-      (eprintf "Failed to get nvim config info")))
-  # clean up if needed
-  (when (os/stat out-fname)
-    (os/rm out-fname))
-  #
-  (if results
+  (def cmd ["nvim"
+            "-es"
+            "-c" (string `redir! >` out-fname)
+            "-c" `echo stdpath("data")`
+            "-c" `echo stdpath("config")`
+            "-c" `echo "\n"`
+            "-c" `quit`])
+  (def results
+    (defer (when (os/stat out-fname)
+             (os/rm out-fname))
+      (try
+        (when (zero? (os/execute cmd :px))
+          (slurp out-fname))
+        ([e]
+          (eprintf "Failed to get nvim config info")))))
+  (when results
     (peg/match ~(sequence (any (set "\r\n"))
                           (some (sequence (not (choice "\r\n" "\n"))
                                           # target
                                           (capture (to (choice "\r\n" "\n")))
                                           (choice "\r\n" "\n"))))
-               results)
-    results))
+               results)))
 
 (defn have-nvim?
   []
