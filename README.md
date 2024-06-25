@@ -1,14 +1,17 @@
 # janet-neovim-trial-kit
 
-Try out some Janet support in Neovim without having to:
+The two main purposes of the trial kit are to:
 
-* Manually fetch certain dependencies
-* Change your existing Neovim configuration
-* Figure out how to configure Neovim for some Janet support
+1. Make it easy to experience some Janet support in Neovim without
+   having to:
 
-Or...learn about existing Neovim plugins with Janet features by
-reading some
-[docs](https://github.com/sogaiu/janet-editor-and-tooling-info/blob/master/doc/neovim.md).
+    * Change your existing Neovim configuration
+    * Figure out how to configure Neovim for some Janet support
+    * Manually fetch certain dependencies
+
+2. Provide [a
+   path](https://github.com/sogaiu/janet-editor-and-tooling-info/blob/master/doc/neovim.md)
+   to find out about Janet-relevant Neovim plugins.
 
 ![Demo](janet-neovim-trial-kit-linux.png?raw=true "Demo")
 
