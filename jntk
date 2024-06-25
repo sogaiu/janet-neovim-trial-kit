@@ -140,7 +140,7 @@
              nvim-ver-str nvim-maj nvim-min)
     (os/exit 1))
   # ensure appropriate c compiler available
-  (when (not have-cc?)
+  (when (not (have-cc?))
     (os/exit 1))
   # figure out where various files should live
   (def nvim-info (get-nvim-info))
