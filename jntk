@@ -66,12 +66,14 @@
 
 (defn nvim-sufficient?
   [ver-str]
-  (if-let [[maj min patch other] (parse-nvim-ver-str ver-str)]
-    (and (= (scan-number maj) nvim-maj)
-         (>= (scan-number min) nvim-min))
-    (do
-      (eprintf "Failed to parse nvim version string: %s" ver-str)
-      false)))
+  (def result (parse-nvim-ver-str ver-str))
+  (when (not result)
+    (eprintf "Failed to parse nvim version string: %s" ver-str)
+    (break false))
+  (def [major minor _ _] result)
+  #
+  (and (= (scan-number major) nvim-maj)
+       (>= (scan-number minor) nvim-min)))
 
 # XXX: intent is to modify what neovim's stdpath returns
 #      see :h standard-path and :h base-directories
