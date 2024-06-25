@@ -14,7 +14,7 @@ Try out some Janet support in Neovim without having to:
   [clang](https://clang.llvm.org/), etc. invocable via `cc`)
 * [git](https://git-scm.com/)
 * [janet](https://janet-lang.org)
-* [nvim](https://neovim.io)
+* [nvim](https://neovim.io) - recent version might be necessary (>= 0.10.0)
 
 For Windows:
 
