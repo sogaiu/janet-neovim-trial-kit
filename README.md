@@ -1,7 +1,10 @@
 # janet-neovim-trial-kit
 
-Try out some Janet support in Neovim without interfering with
-your existing Neovim setup [1].
+Try out some Janet support in Neovim without having to:
+
+* Manually fetch certain dependencies
+* Change your existing Neovim configuration
+* Figure out how to configure Neovim for some Janet support
 
 ![Demo](janet-neovim-trial-kit-linux.png?raw=true "Demo")
 
@@ -25,7 +28,10 @@ For Windows:
 
 ## What You Get
 
-The Neovim setup provides:
+The trial kit provides a Janet-specific arrangement as well as some
+extra functionality.
+
+### Janet-Specific
 
 * Basic Janet code handling (e.g. indentation) via
   [janet.vim](https://github.com/janet-lang/janet.vim)
@@ -36,6 +42,9 @@ The Neovim setup provides:
   support
 * REPL interaction via [Conjure](https://github.com/Olical/conjure/)
 * Linting via [nvim-lint](https://github.com/mfussenegger/nvim-lint/)
+
+### Extras
+
 * Structural navigation and editing via
   [vim-sexp](https://github.com/guns/vim-sexp) and
   [vim-sexp-mappings-for-regular-people](https://github.com/tpope/vim-sexp-mappings-for-regular-people)
@@ -45,12 +54,6 @@ The Neovim setup provides:
 * Dark theme via [gruvbox](https://github.com/sogaiu/morhetz/gruvbox)
 * (Re)discoverability improvements via [which-key](https://github.com/folke/which-key.nvim)
 * Simple plugin manager via [vim-plug](https://github.com/junegunn/vim-plug)
-
-All without having to:
-
-* Manually fetch certain dependencies
-* Change your existing Neovim configuration
-* Figure out how to configure Neovim for some Janet support
 
 ## Initial Setup
 
@@ -175,6 +178,11 @@ janet jntk sample.janet
   jntk`.  Alternatively, just remove the cloned directory and
   reclone to start over.
 
+## Caveats
+
+Various `XDG_*` environment variables are set before starting `nvim`
+to influence what is returned by `stdpath`.
+
 ## Credits
 
 Thanks to authors of various bits, but also the following folks for
@@ -186,9 +194,4 @@ efforts specifically regarding this project:
 * harryvederci
 * Olical
 * pyrmont
-
-## Footnotes
-
-[1] Various `XDG_*` environment variables are set before starting
-`nvim` to influence what is returned by `stdpath`.
 
