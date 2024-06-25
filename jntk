@@ -3,12 +3,8 @@
 (defn ensure-bin
   [name]
   (try
-    (zero? (let [f (file/temp)
-                 r (os/execute ["which" name]
-                               :px
-                               {:out f})]
-             (file/close f)
-             r))
+    (with [f (file/temp)]
+      (zero? (os/execute ["which" name] :px {:out f})))
     ([e]
       (eprintf "%s does not appear to be on PATH" name)
       false)))
@@ -16,12 +12,8 @@
 (defn ensure-win-bin
   [name]
   (try
-    (zero? (let [f (file/temp)
-                 r (os/execute ["where" name]
-                               :px
-                               {:out f})]
-             (file/close f)
-             r))
+    (with [f (file/temp)]
+      (zero? (os/execute ["where" name] :px {:out f})))
     ([e]
       (eprintf "%s does not appear to be on PATH" name)
       false)))
@@ -29,17 +21,13 @@
 (defn get-version
   [cmd ver-peg]
   (try
-    (let [f (file/temp)
-          r (os/execute cmd
-                        :px
-                        {:out f})]
+    (with [f (file/temp)]
+      (def r (os/execute cmd :px {:out f}))
       (when (not (zero? r))
-        (file/close f)
         (errorf "Non-zero exit code: %s" r))
       #
       (file/seek f :set 0)
       (def version-line (file/read f :line))
-      (file/close f)
       (def version
         (-?>> (peg/match ver-peg version-line)
               first
