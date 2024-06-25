@@ -113,12 +113,17 @@
         (slurp "init.vim"))
   # install plugins
   (print "Installing plugins...")
-  (os/execute ["nvim"
-               "-es"
-               "-u" "install.vim"
-               "-c" "PlugInstall"
-               "-c" "quit"]
-              :px))
+  (def r (os/execute ["nvim"
+                      "-es"
+                      "-u" "install.vim"
+                      "-c" "PlugInstall"
+                      "-c" "quit"]
+                     :p))
+  (when (not (zero? r))
+    (eprintf "nvim exited with non-zero code: %d" r)
+    (os/exit 1))
+  #
+  true)
 
 (defn main
   [& argv]
