@@ -77,8 +77,7 @@
 # XXX: intent is to modify what neovim's stdpath returns
 #      see :h standard-path and :h base-directories
 (defn isolate
-  []
-  (def root-dir (os/cwd))
+  [root-dir]
   (os/setenv "XDG_CONFIG_HOME" (string root-dir "/config"))
   (os/setenv "XDG_DATA_HOME" (string root-dir "/data"))
   #(os/setenv "XDG_RUNTIME_DIR" (string root-dir "/runtime"))
@@ -87,8 +86,8 @@
   (os/setenv "XDG_LOG_FILE" (string root-dir "/log")))
 
 (defn setup
-  []
-  (isolate)
+  [root-dir]
+  (isolate root-dir)
   # verify nvim exists and its version is sufficient
   (if (= :windows (os/which))
     (when (not (ensure-win-bin "nvim.exe"))
@@ -140,7 +139,8 @@
 
 (defn main
   [& argv]
-  (setup)
-  (isolate)
+  (def root-dir (os/cwd))
+  (setup root-dir)
+  (isolate root-dir)
   (os/execute ["nvim" ;(array/slice argv 1)] :px))
 
