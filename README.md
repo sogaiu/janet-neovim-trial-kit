@@ -6,6 +6,10 @@ Try out some Janet support in Neovim without having to:
 * Change your existing Neovim configuration
 * Figure out how to configure Neovim for some Janet support
 
+Or...learn about existing Neovim plugins with Janet features by
+reading some
+[docs](https://github.com/sogaiu/janet-editor-and-tooling-info/blob/master/doc/neovim.md).
+
 ![Demo](janet-neovim-trial-kit-linux.png?raw=true "Demo")
 
 ## Requirements
