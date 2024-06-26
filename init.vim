@@ -28,7 +28,8 @@ Plug 'tpope/vim-sexp-mappings-for-regular-people'
 
 call plug#end()
 
-" for using stdio with janet instead of netrepl
+" conjure's default is to use netrepl, but for the trial kit,
+" using stdio means less dependencies
 let g:conjure#filetype#janet = 'conjure.client.janet.stdio'
 
 lua << EOF
