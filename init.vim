@@ -2,39 +2,22 @@ call plug#begin()
 
 Plug 'morhetz/gruvbox'
 
-Plug 'folke/which-key.nvim'
-
 Plug 'Olical/aniseed', { 'tag': 'v3.33.0' }
 
 " :ConjureSchool
-Plug 'Olical/conjure', { 'tag': 'v4.52.1' }
+Plug 'pyrmont/conjure', { 'tag': 'feature.janet-mrepl' }
 
 Plug 'bakpakin/janet.vim'
 
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 
-" :TSPlaygroundToggle
-Plug 'nvim-treesitter/playground'
-
-Plug 'mfussenegger/nvim-lint'
-
 Plug 'HiPhish/rainbow-delimiters.nvim'
-
-" usable vim-sexp
-Plug 'guns/vim-sexp'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-sexp-mappings-for-regular-people'
 
 call plug#end()
 
 " conjure's default is to use netrepl, but for the trial kit,
-" using stdio means less dependencies
-let g:conjure#filetype#janet = 'conjure.client.janet.stdio'
-
-lua << EOF
-require('which-key').setup()
-EOF
+" using mrepl means less dependencies
+let g:conjure#filetype#janet = 'conjure.client.janet.mrepl'
 
 "-- adapted:
 "--   https://github.com/janet-lang/janet.vim/blob/master/ftdetect/janet.vim
@@ -50,45 +33,7 @@ require('nvim-treesitter.configs').setup {
   highlight = {
     enable = true,
   },
-  -- playground
-  playground = {
-    enable = true,
-    disable = {},
-    -- Debouncing for highlighting nodes in playground from source code
-    updatetime = 25,
-    -- Whether the query persists across vim sessions
-    persist_queries = false,
-    keybindings = {
-      toggle_query_editor = 'o',
-      toggle_hl_groups = 'i',
-      toggle_injected_languages = 't',
-      toggle_anonymous_nodes = 'a',
-      toggle_language_display = 'I',
-      focus_language = 'f',
-      unfocus_language = 'F',
-      update = 'R',
-      goto_node = '<cr>',
-      show_help = '?',
-    },
-  }
 }
-EOF
-
-lua << EOF
--- manually triggering -> :lua require("lint").try_lint()
-require('lint').linters_by_ft = {
-  --janet = {'janet', 'rjan'},
-  janet = {'janet'},
-}
-EOF
-
-lua << EOF
--- TextChangedI might be worth trying at some point
-vim.api.nvim_create_autocmd({ "BufRead", "BufWritePost", "InsertLeave" }, {
-  callback = function()
-    require("lint").try_lint()
-  end,
-})
 EOF
 
 lua << EOF
@@ -115,9 +60,6 @@ vim.g.rainbow_delimiters = {
     },
 }
 EOF
-
-" so vim-sexp stuff works for janet
-let g:sexp_filetypes = 'clojure,scheme,lisp,timl,janet'
 
 colorscheme gruvbox
 
