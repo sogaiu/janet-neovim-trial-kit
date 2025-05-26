@@ -55,8 +55,6 @@ extra functionality.
 * Structural navigation and editing via
   [vim-sexp](https://github.com/guns/vim-sexp) and
   [vim-sexp-mappings-for-regular-people](https://github.com/tpope/vim-sexp-mappings-for-regular-people)
-* Syntactic code view and navigation via
-  [playground](https://github.com/nvim-treesitter/playground)
 * Rainbow delimiters via [rainbow-delimiters.nvim](https://github.com/HiPhish/rainbow-delimiters.nvim)
 * Dark theme via [gruvbox](https://github.com/sogaiu/morhetz/gruvbox)
 * (Re)discoverability improvements via [which-key](https://github.com/folke/which-key.nvim)
@@ -118,29 +116,28 @@ Check out `:ConjureSchool` to learn more.
 
 ### Playground
 
-Invoking `:TSPlaygroundToggle` should display a tree representation
-of the source like this:
+Invoking `:InspectTree` should display a tree representation of the
+source like this:
 
 ```
-par_tup_lit [0, 0] - [0, 7]
-  sym_lit [0, 1] - [0, 2]
-  num_lit [0, 3] - [0, 4]
-  num_lit [0, 5] - [0, 6]
-par_tup_lit [2, 0] - [4, 10]
-  sym_lit [2, 1] - [2, 5]
-  sym_lit [2, 6] - [2, 11]
-  sqr_tup_lit [3, 2] - [3, 5]
-    sym_lit [3, 3] - [3, 4]
-  par_tup_lit [4, 2] - [4, 9]
-    sym_lit [4, 3] - [4, 4]
-    sym_lit [4, 5] - [4, 6]
-    num_lit [4, 7] - [4, 8]
-par_tup_lit [6, 0] - [6, 9]
-  sym_lit [6, 1] - [6, 6]
-  num_lit [6, 7] - [6, 8]
+(source ; [0, 0] - [7, 0]                                                 │
+  (par_tup_lit ; [0, 0] - [0, 7]                                          │
+    (sym_lit) ; [0, 1] - [0, 2]                                           │
+    (num_lit) ; [0, 3] - [0, 4]                                           │
+    (num_lit)) ; [0, 5] - [0, 6]                                          │
+  (par_tup_lit ; [2, 0] - [4, 10]                                         │
+    (sym_lit) ; [2, 1] - [2, 5]                                           │
+    (sym_lit) ; [2, 6] - [2, 11]                                          │
+    (sqr_tup_lit ; [3, 2] - [3, 5]                                        │
+      (sym_lit)) ; [3, 3] - [3, 4]                                        │
+    (par_tup_lit ; [4, 2] - [4, 9]                                        │
+      (sym_lit) ; [4, 3] - [4, 4]                                         │
+      (sym_lit) ; [4, 5] - [4, 6]                                         │
+      (num_lit))) ; [4, 7] - [4, 8]                                       │
+  (par_tup_lit ; [6, 0] - [6, 9]                                          │
+    (sym_lit) ; [6, 1] - [6, 6]                                           │
+    (num_lit))) ; [6, 7] - [6, 8]
 ```
-
-Invoke `:TSPlaygroundToggle` to get it to go away.
 
 With the plaground showing, once a cursor is in the same buffer,
 navigation among the nodes of the tree should cause parts of the

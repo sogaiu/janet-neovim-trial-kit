@@ -12,9 +12,6 @@ Plug 'bakpakin/janet.vim'
 
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 
-" :TSPlaygroundToggle
-Plug 'nvim-treesitter/playground'
-
 Plug 'mfussenegger/nvim-lint'
 
 Plug 'HiPhish/rainbow-delimiters.nvim'
