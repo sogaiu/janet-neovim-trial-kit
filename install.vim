@@ -3,10 +3,12 @@ call plug#begin()
 
 Plug 'morhetz/gruvbox'
 
-Plug 'Olical/aniseed', { 'tag': 'v3.33.0' }
-
 " :ConjureSchool
-Plug 'pyrmont/conjure', { 'tag': 'feature.janet-mrepl' }
+Plug 'Olical/conjure'
+
+" mrepl / grapple
+Plug 'Olical/nfnl'
+Plug 'pyrmont/grapple', { 'rtp': 'res/plugins/grapple.nvim' }
 
 Plug 'bakpakin/janet.vim'
 

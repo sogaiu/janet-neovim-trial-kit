@@ -2,10 +2,12 @@ call plug#begin()
 
 Plug 'morhetz/gruvbox'
 
-Plug 'Olical/aniseed', { 'tag': 'v3.33.0' }
-
 " :ConjureSchool
-Plug 'pyrmont/conjure', { 'tag': 'feature.janet-mrepl' }
+Plug 'Olical/conjure'
+
+" mrepl / grapple
+Plug 'Olical/nfnl'
+Plug 'pyrmont/grapple', { 'rtp': 'res/plugins/grapple.nvim' }
 
 Plug 'bakpakin/janet.vim'
 
@@ -15,9 +17,8 @@ Plug 'HiPhish/rainbow-delimiters.nvim'
 
 call plug#end()
 
-" conjure's default is to use netrepl, but for the trial kit,
-" using mrepl means less dependencies
-let g:conjure#filetype#janet = 'conjure.client.janet.mrepl'
+" use mrepl / grapple
+let g:conjure#filetype#janet = 'grapple.client'
 
 "-- adapted:
 "--   https://github.com/janet-lang/janet.vim/blob/master/ftdetect/janet.vim
