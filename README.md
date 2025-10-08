@@ -56,7 +56,7 @@ extra functionality.
   [vim-sexp](https://github.com/guns/vim-sexp) and
   [vim-sexp-mappings-for-regular-people](https://github.com/tpope/vim-sexp-mappings-for-regular-people)
 * Rainbow delimiters via [rainbow-delimiters.nvim](https://github.com/HiPhish/rainbow-delimiters.nvim)
-* Dark theme via [gruvbox](https://github.com/sogaiu/morhetz/gruvbox)
+* Dark theme via [gruvbox](https://github.com/morhetz/gruvbox)
 * (Re)discoverability improvements via [which-key](https://github.com/folke/which-key.nvim)
 * Simple plugin manager via [vim-plug](https://github.com/junegunn/vim-plug)
 
