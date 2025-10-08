@@ -40,6 +40,8 @@ extra functionality.
 
 ### Janet-Specific
 
+* mREPL interaction via [Conjure](https://github.com/Olical/conjure/) and
+  [Grapple](https://github.com/pyrmont/grapple)
 * Basic Janet code handling (e.g. indentation) via
   [janet.vim](https://github.com/janet-lang/janet.vim)
 * Syntax highlighting via
@@ -47,19 +49,11 @@ extra functionality.
   with
   [tree-sitter-janet-simple](https://github.com/sogaiu/tree-sitter-janet-simple)
   support
-* REPL interaction via [Conjure](https://github.com/Olical/conjure/)
-* Linting via [nvim-lint](https://github.com/mfussenegger/nvim-lint/)
 
 ### Extras
 
-* Structural navigation and editing via
-  [vim-sexp](https://github.com/guns/vim-sexp) and
-  [vim-sexp-mappings-for-regular-people](https://github.com/tpope/vim-sexp-mappings-for-regular-people)
-* Syntactic code view and navigation via
-  [playground](https://github.com/nvim-treesitter/playground)
 * Rainbow delimiters via [rainbow-delimiters.nvim](https://github.com/HiPhish/rainbow-delimiters.nvim)
 * Dark theme via [gruvbox](https://github.com/sogaiu/morhetz/gruvbox)
-* (Re)discoverability improvements via [which-key](https://github.com/folke/which-key.nvim)
 * Simple plugin manager via [vim-plug](https://github.com/junegunn/vim-plug)
 
 ## Initial Setup
@@ -67,7 +61,7 @@ extra functionality.
 Initial invocations:
 
 ```
-git clone https://github.com/sogaiu/janet-neovim-trial-kit
+git clone https://github.com/sogaiu/janet-neovim-trial-kit --branch mrepl
 cd janet-neovim-trial-kit
 janet jntk
 ```
@@ -98,8 +92,9 @@ Also visible should be Conjure's HUD indicating a successful
 connection.  A message somewhat like the following should be visible:
 
 ```
-# "janet -n -s" (started)
-Janet 1.32.1-2ea2e72d ...
+# Sponsored by @chad
+======= info =======
+Connected to Grapple v1.0.0-dev running Janet v1.40.0 as session 11
 ```
 
 To evaluate some code, move the cursor somewhere on top of
@@ -107,49 +102,15 @@ To evaluate some code, move the cursor somewhere on top of
 the following in the HUD:
 
 ```
-# eval (root-form): (+ 1 2)
+====== input =======
+(+ 1 2)
+====== result ======
+3
 ```
 
-Also, you might see `=> 3` to the right of `(+ 1 2)` in the source
-code.  Moving the cursor should cause the HUD and the `=> 3` to
-disappear.
+Moving the cursor should cause the HUD disappear.
 
 Check out `:ConjureSchool` to learn more.
-
-### Playground
-
-Invoking `:TSPlaygroundToggle` should display a tree representation
-of the source like this:
-
-```
-par_tup_lit [0, 0] - [0, 7]
-  sym_lit [0, 1] - [0, 2]
-  num_lit [0, 3] - [0, 4]
-  num_lit [0, 5] - [0, 6]
-par_tup_lit [2, 0] - [4, 10]
-  sym_lit [2, 1] - [2, 5]
-  sym_lit [2, 6] - [2, 11]
-  sqr_tup_lit [3, 2] - [3, 5]
-    sym_lit [3, 3] - [3, 4]
-  par_tup_lit [4, 2] - [4, 9]
-    sym_lit [4, 3] - [4, 4]
-    sym_lit [4, 5] - [4, 6]
-    num_lit [4, 7] - [4, 8]
-par_tup_lit [6, 0] - [6, 9]
-  sym_lit [6, 1] - [6, 6]
-  num_lit [6, 7] - [6, 8]
-```
-
-Invoke `:TSPlaygroundToggle` to get it to go away.
-
-With the plaground showing, once a cursor is in the same buffer,
-navigation among the nodes of the tree should cause parts of the
-source buffer to be highlighted.  This can be handy for learning about
-syntax.
-
-Tracking occurs if the cursor is in the source buffer as well.  That
-is, corresponding tree nodes will be highlighted as source is
-navigated.
 
 ## Typical Use
 
