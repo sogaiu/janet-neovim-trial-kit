@@ -25,16 +25,29 @@ let g:conjure#filetype#janet = 'grapple.client'
 "-- au BufRead,BufNewFile *.janet,*.jdn setlocal filetype=janet
 
 lua << EOF
-require('nvim-treesitter.configs').setup {
-  ensure_installed = {"bash",
-                      "c",
-                      "html",
-                      "janet_simple", "javascript",
-                      "query"},
-  highlight = {
-    enable = true,
-  },
+require('nvim-treesitter').install {
+  'bash',
+  'c',
+  'html',
+  'janet_simple', 'javascript',
+  'query'
 }
+EOF
+
+lua << EOF
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = {
+      'bash',
+      'c',
+      'html',
+      'janet_simple', 'javascript',
+      'query'
+    },
+    callback = function()
+      -- syntax highlighting, provided by Neovim
+      vim.treesitter.start()
+    end,
+  })
 EOF
 
 lua << EOF
