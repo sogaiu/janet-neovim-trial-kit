@@ -36,16 +36,37 @@ EOF
 "-- au BufRead,BufNewFile *.janet,*.jdn setlocal filetype=janet
 
 lua << EOF
-require('nvim-treesitter.configs').setup {
-  ensure_installed = {"bash",
-                      "c",
-                      "html",
-                      "janet_simple", "javascript",
-                      "query"},
-  highlight = {
-    enable = true,
-  }
+require('nvim-treesitter').setup {
+  -- Dir to install parsers and queries to
+  -- Prepended to `runtimepath` to have priority
+  install_dir = vim.fn.stdpath('data') .. '/site'
 }
+EOF
+
+lua << EOF
+require('nvim-treesitter').install {
+  'bash',
+  'c',
+  'html',
+  'janet_simple', 'javascript',
+  'query'
+}
+EOF
+
+lua << EOF
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = {
+      'bash',
+      'c',
+      'html',
+      'janet_simple', 'javascript',
+      'query'
+    },
+    callback = function()
+      -- syntax highlighting, provided by Neovim
+      vim.treesitter.start()
+    end,
+  })
 EOF
 
 lua << EOF
